@@ -16,17 +16,30 @@ dataSources:
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
-        - NFTCreated
-        - NFTRegesitered
-        - OwnershipTransferred
+        - ERC721
       abis:
         - name: NFTFactory
           file: ./abis/NFTFactory.json
       eventHandlers:
         - event: NFTCreated(address)
           handler: handleNFTCreated
-        - event: NFTRegesitered(address)
-          handler: handleNFTRegesitered
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
+      file: ./src/nft-factory.ts
+templates:
+  - kind: ethereum/contract
+    name: S2NFT
+    network: sepolia
+    source:
+      abi: S2NFT
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Transfer
+      abis:
+        - name: S2NFT
+          file: ./abis/S2NFT.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
       file: ./src/nft-factory.ts
