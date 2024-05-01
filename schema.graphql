@@ -1,4 +1,4 @@
-type NFTCreated @entity(immutable: true) {
+type NFT @entity(immutable: true) {
   id: Bytes!
   nftCA: Bytes! # address
   blockNumber: BigInt!
@@ -6,15 +6,6 @@ type NFTCreated @entity(immutable: true) {
   transactionHash: Bytes!
 }
 
-type Transfer @entity(immutable: true) {
-  id: Bytes!
-  from: Bytes! # address
-  to: Bytes! # address
-  tokenId: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
 
 type TokenInfo @entity {
   id: ID!

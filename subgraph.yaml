@@ -16,7 +16,7 @@ dataSources:
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
-        - ERC721
+        - NFT
       abis:
         - name: NFTFactory
           file: ./abis/NFTFactory.json
@@ -34,12 +34,13 @@ templates:
       kind: ethereum/events
       apiVersion: 0.0.7
       language: wasm/assemblyscript
+      file: ./src/nft-factory.ts
       entities:
-        - Transfer
+        - TokenInfo
       abis:
         - name: S2NFT
           file: ./abis/S2NFT.json
       eventHandlers:
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransfer
-      file: ./src/nft-factory.ts
+
